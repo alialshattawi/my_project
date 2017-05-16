@@ -1,8 +1,9 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Fitnesses</h1>
 
-<table>
+<table class="table table-striped table table-bordered table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -22,12 +23,12 @@
         <td><%= fitness.review %></td>
         <td><%= fitness.phone %></td>
         <td><%= fitness.email %></td>
-        <td><%= link_to 'Show', fitness %></td> 
+        <td><%= link_to 'Show', fitness,class:"btn btn-danger" %></td> 
         
         
         <%if current_user.admin?%>
-          <td><%= link_to 'Edit', edit_fitness_path(fitness) %></td>
-          <td><%= link_to 'Destroy', fitness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_fitness_path(fitness), class:"btn btn-info" %></td>
+          <td><%= link_to 'Destroy', fitness, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-warning"%></td>
         <%end%>
     
       </tr>
@@ -38,5 +39,6 @@
 <br>
 
   <%if current_user.admin?%>
-    <%= link_to 'New Fitness', new_fitness_path %>
+    <%= link_to 'New Fitness', new_fitness_path,class:"btn btn-primary btn-lg" %>
   <%end%>
+   </div>

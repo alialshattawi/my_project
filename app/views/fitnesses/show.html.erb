@@ -29,9 +29,9 @@
 </ul>
 <%end%>
 <br>
-<td><%= link_to 'Join Us',  edit_user_registration_path(fitness_no: @fitness.id) %></td></br>
-  <%if current_user.admin?%>
-    <%= link_to 'Edit', edit_fitness_path(@fitness) %> |
-    <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+<td><%= link_to 'Join Us',  edit_user_registration_path(fitness_no: @fitness.id),class:"btn btn-success" %></td></br>
+  <%if current_user.admin?%><br>
+    <%= link_to 'Edit', edit_fitness_path(@fitness),class:"btn btn-danger" %> |
+    <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete,class:"btn btn-warning"%> |
   <%end%>
-<%= link_to 'Back', fitnesses_path %>
+<%= link_to 'Back', fitnesses_path,class:"btn btn-info" %>
