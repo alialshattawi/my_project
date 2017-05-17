@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @fitness.name %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @fitness.address %>
+</p>
+<p>
+ 
+<p>
+  <strong>Phone:</strong>
+  <%= @fitness.phone %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @fitness.email %>
+</p>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@fitness.latitude}%2C#{@fitness.longitude}" %>
+<% if @fitness.nearbys(10) == nil %>
+<h3>Nearby locations</h3>
+<ul>
+  <% @fitness.nearbys(10).each do |nearby_classified| %>
+    <li><%= link_to nearby_classified.name, nearby_classified %></li>
+  <% end %>
+</ul>
+
+<%end%>
+<br>
+<td><%= link_to 'Join Us',  edit_user_registration_path(fitness_no: @fitness.id),class:"btn btn-success" %></td></br>
+  <%if current_user.admin?%><br>
+    <%= link_to 'Edit', edit_fitness_path(@fitness),class:"btn btn-danger" %> |
+    <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete,class:"btn btn-warning"%> |
+  <%end%>
+<%= link_to 'Back', fitnesses_path,class:"btn btn-info" %>
+
+ 
+<%if current_user.admin?%>
+ <strong>Listing Members:</strong></br>
+  <table>
+   <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Email</th>
+      
+    </tr>
+  </thead>
+  
+ <tbody>
+  <% @fitness.users.each do |g| %>
+  <tr>
+ <td>  <%= g.name  %></td>
+   <td><%= g.address  %></td>
+   <td><%= g.phone  %></td>
+   <td><%= g.email  %></td>
+  </tr>
+  <%end%>
+ </tbody>
+</table>
+<%end%>

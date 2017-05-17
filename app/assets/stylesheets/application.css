@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ .background-style {
+    background-image: url("/public/fitness-295284_1280.png");
+}
+
